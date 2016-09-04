@@ -9,7 +9,7 @@ $skLiveKey = '';
 $pkTestKey = 'pk_test_aBTnnTX5QaO2AblZ5wNq2A';
 $skTestKey = 'sk_test_DneFEolPcJVCKfQMzDjhWQ';
 
-$magpie = new Magpie($pkTestKey, $skTestKey, true);
+$magpie = new MagpieApi\Magpie($pkTestKey, $skTestKey, true);
 
 // Create token
 // $response = $magpie->token->create(

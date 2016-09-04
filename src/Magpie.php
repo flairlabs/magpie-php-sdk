@@ -1,9 +1,6 @@
 <?php
 
-use Magpie\Card;
-use Magpie\Token;
-use Magpie\Charge;
-use Magpie\Customer;
+namespace MagpieApi;
 
 class Magpie
 {

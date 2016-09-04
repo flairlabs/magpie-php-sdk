@@ -1,8 +1,6 @@
 <?php
 
-namespace Magpie;
-
-use Magpie\Response;
+namespace MagpieApi;
 
 class Request
 {

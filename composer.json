@@ -19,11 +19,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Magpie\\": "src/"
-        },
-        "files": [
-            "Magpie.php"
-        ]
+            "MagpieApi\\": "src/"
+        }
     },
     "require": {
         "php": ">=5.5"

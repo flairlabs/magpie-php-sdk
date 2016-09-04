@@ -1,6 +1,6 @@
 <?php
 
-namespace Magpie;
+namespace MagpieApi;
 
 /**
  * This class holds the APIs anything related to customer.
