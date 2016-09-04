@@ -1,6 +1,6 @@
 <?php
 
-require 'Magpie.php';
+require_once 'vendor/autoload.php';
 
 // For production
 $pkLiveKey = '';
