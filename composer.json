@@ -5,6 +5,7 @@
     "version": "0.0.0",
     "license": "MIT",
     "prefer-stable": true,
+    "minimum-stability": "stable",
     "keywords": ["magpie"],
     "homepage": "https://github.com/flairlabs/magpie-php-sdk",
     "authors": [
