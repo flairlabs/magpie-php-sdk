@@ -1,0 +1,17 @@
+{
+    "name": "magpie/php-sdk",
+    "description": "Magpie PHP SDK to allow developers to connect to Magpie REST APIs",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jaime Hing III",
+            "email": "jaimehing@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Magpie\\": "src/"
+        }
+    },
+    "require": {}
+}
