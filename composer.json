@@ -1,7 +1,8 @@
 {
-    "name": "magpie/php-sdk",
+    "name": "flairlabs/magpie-php-sdk",
     "description": "Magpie PHP SDK to allow developers to connect to Magpie REST APIs",
     "type": "library",
+    "homepage": "https://github.com/flairlabs/magpie-php-sdk",
     "authors": [
         {
             "name": "Jaime Hing III",
