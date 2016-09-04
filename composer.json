@@ -2,6 +2,7 @@
     "name": "flairlabs/magpie-php-sdk",
     "description": "Magpie PHP SDK to allow developers to connect to Magpie REST APIs",
     "type": "library",
+    "keywords": ["magpie"],
     "homepage": "https://github.com/flairlabs/magpie-php-sdk",
     "authors": [
         {
@@ -9,10 +10,15 @@
             "email": "jaimehing@gmail.com"
         }
     ],
+    "support": {
+        "email": "jaimehing@gmail.com"
+    },
     "autoload": {
         "psr-4": {
             "Magpie\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "php": ">=5.5"
+    }
 }
