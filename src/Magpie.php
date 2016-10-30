@@ -23,6 +23,26 @@ class Magpie
         $this->customer = new Customer($this->isSandbox, $this->skKey);
     }
 
+    public function __set($name, $value) {
+        switch($name)
+        {
+            case 'pkKey':
+                $this->pkKey = $value;
+                $this->token->key = $value;
+                break;
+            case 'skKey':
+                $this->skKey = $value;
+                $this->charge->key = $value;
+                $this->customer->key = $value;
+                break;
+            case  'isSandbox':
+                $this->isSandbox = $value;
+                $this->token->isSandbox = $value;
+                $this->charge->isSandbox = $value;
+                $this->customer->isSandbox = $value;
+        }
+    }
+
     public function __get($name) {
         if ($name === 'token') {
             return $this->token;

@@ -22,6 +22,21 @@ class Request
 		}
 	}
 
+    public function __set($name, $value)
+    {
+        switch($name)
+        {
+            case 'isSandbox':
+                $this->isSandbox = $value;
+                if ($this->isSandbox) {
+                    $this->baseUrl = self::SANDBOX_URL;
+                } else {
+                    $this->baseUrl = self::PRODUCTION_URL;
+                }
+                break;
+        }
+    }
+
     /**
      * Sets the POST data to the cURL object
      * @param [type] $curlObj [description]
