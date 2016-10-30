@@ -14,7 +14,20 @@ class Token
 		$this->isSandbox = $isSandbox;
 		$this->request   = new Request($this->isSandbox, self::URI);
 		$this->key       = $key;
-	}	
+	}
+
+	public function __set($name, $value)
+	{
+	    switch($name) {
+	        case 'key':
+	            $this->key = $value;
+	            break;
+	        case 'isSandbox':
+	            $this->isSandbox = $value;
+	            $this->request->isSandbox = $this->isSandbox;
+	            break;
+	    }
+	}
 
 	/**
 	 * @param  Card   $card [description]
