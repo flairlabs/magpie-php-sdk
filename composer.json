@@ -2,7 +2,7 @@
     "name": "flairlabs/magpie-php-sdk",
     "description": "Magpie PHP SDK to allow developers to connect to Magpie REST APIs",
     "type": "library",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "license": "MIT",
     "prefer-stable": true,
     "minimum-stability": "stable",
