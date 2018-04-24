@@ -12,14 +12,20 @@ class Magpie
     private $token;
     private $charge;
     private $customer;
+    private $version;
 
-    public function __construct($pkKey = null, $skKey = null, $isSandbox = false)
+    public function __construct($pkKey = null, $skKey = null, $isSandbox = false, $version = 'v1')
     {
+        if (!in_array($version, ['v1', 'v1.1'])) {
+            throw new \Exception('Invalid version. Choose either v1 or v1.1');
+        }
+
         $this->pkKey = $pkKey;
         $this->skKey = $skKey;
         $this->isSandbox = $isSandbox;
+        $this->version = $version;
         $this->token = new Token($this->isSandbox, $this->pkKey);
-        $this->charge = new Charge($this->isSandbox, $this->skKey);
+        $this->charge = new Charge($this->isSandbox, $this->skKey, $this->version);
         $this->customer = new Customer($this->isSandbox, $this->skKey);
     }
 
@@ -35,11 +41,19 @@ class Magpie
                 $this->charge->key = $value;
                 $this->customer->key = $value;
                 break;
-            case  'isSandbox':
+            case 'isSandbox':
                 $this->isSandbox = $value;
                 $this->token->isSandbox = $value;
                 $this->charge->isSandbox = $value;
                 $this->customer->isSandbox = $value;
+                break;
+            case 'version':
+                if (!in_array($value, ['v1', 'v1.1'])) {
+                    throw new \Exception('Invalid version. Choose either v1 or v1.1');
+                }
+
+                $this->version = $value;
+                $this->charge->version = $this->value;
         }
     }
 

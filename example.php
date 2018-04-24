@@ -9,6 +9,9 @@ $skLiveKey = '';
 $pkTestKey = 'pk_test_aBTnnTX5QaO2AblZ5wNq2A';
 $skTestKey = 'sk_test_DneFEolPcJVCKfQMzDjhWQ';
 
+// Note, if you pass 'v1.1' as the last parameter, the charges endpoint
+// will use v1.1 endpoint
+
 $magpie = new MagpieApi\Magpie($pkTestKey, $skTestKey, true);
 
 // Create token

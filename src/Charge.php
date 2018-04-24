@@ -7,7 +7,7 @@ namespace MagpieApi;
  */
 class Charge
 {
-    const URI = '/v1/charges';
+    const URI = '/charges';
     private $baseUrl;
     private $isSandbox;
     private $request;
@@ -19,11 +19,12 @@ class Charge
      * @param bool   $isSandbox Determines if the API will use sandbox URL or production URL
      * @param string $key       The authorization key to be used for calling endpoints
      */
-    public function __construct($isSandbox = false, $key = null)
+    public function __construct($isSandbox = false, $key = null, $version)
     {
         $this->isSandbox = $isSandbox;
-        $this->request = new Request($this->isSandbox, self::URI);
+        $this->request = new Request($this->isSandbox);
         $this->key = $key;
+        $this->version = $version;
     }
 
     public function __set($name, $value)
@@ -36,6 +37,8 @@ class Charge
                 $this->isSandbox = $value;
                 $this->request->isSandbox = $this->isSandbox;
                 break;
+            case 'version':
+                $this->version = $value;
         }
     }
 
@@ -60,7 +63,7 @@ class Charge
         $capture
     ) {
         $response = $this->request->post(
-            self::URI,
+            '/' . $this->version . self::URI,
             $this->key,
             array(
                 'amount' => $amount,
@@ -86,7 +89,7 @@ class Charge
     public function get($id)
     {
         $response = $this->request->get(
-            self::URI.'/'.$id,
+            '/' . $this->version . self::URI.'/'.$id,
             $this->key
         );
         $response->successCode(200);
@@ -105,7 +108,7 @@ class Charge
     public function capture($id, $amount)
     {
         $response = $this->request->post(
-            self::URI.'/'.$id.'/capture',
+            '/' . $this->version . self::URI.'/'.$id.'/capture',
             $this->key,
             array(
                 'amount' => $amount,
@@ -126,7 +129,7 @@ class Charge
     public function void($id)
     {
         $response = $this->request->post(
-            self::URI.'/'.$id.'/void',
+            '/' . $this->version . self::URI.'/'.$id.'/void',
             $this->key
         );
         $response->successCode(200);
@@ -145,7 +148,7 @@ class Charge
     public function refund($id, $amount)
     {
         $response = $this->request->post(
-            self::URI.'/'.$id.'/refund',
+            '/' . $this->version . self::URI.'/'.$id.'/refund',
             $this->key,
             array(
                 'amount' => $amount,
