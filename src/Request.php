@@ -47,7 +47,7 @@ class Request
     }
 
 	private function setUrl($curlObj, $uri) {
-        curl_setopt($curlObj, CURLOPT_URL, $this->baseUrl . $uri);         
+        curl_setopt($curlObj, CURLOPT_URL, $this->baseUrl . $uri);
     }
 
     /**
@@ -62,7 +62,11 @@ class Request
 
     private function generateResponse($curlObj) {
     	$output = curl_exec($curlObj);
-    	
+
+        if(curl_errno($curlObj)) {
+            throw new \Exception(curl_error($curlObj));
+        }
+
         return new Response(
         	curl_getinfo($curlObj, CURLINFO_HTTP_CODE),
         	$output
@@ -88,7 +92,7 @@ class Request
         $this->generateHeader($this->curl, $key);
 
         $response = $this->generateResponse($this->curl);
-        
+
         $this->closeCurl($this->curl);
 
         return $response;
@@ -106,7 +110,7 @@ class Request
         }
 
         $response = $this->generateResponse($this->curl);
-        
+
         $this->closeCurl($this->curl);
 
         return $response;
@@ -121,7 +125,7 @@ class Request
         $this->setPostData($this->curl, $data);
 
         $response = $this->generateResponse($this->curl);
-        
+
         $this->closeCurl($this->curl);
 
         return $response;
@@ -136,7 +140,7 @@ class Request
         $this->generateHeader($this->curl, $key);
 
         $response = $this->generateResponse($this->curl);
-        
+
         $this->closeCurl($this->curl);
 
         return $response;
